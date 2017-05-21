@@ -5,8 +5,7 @@
 
 void main(int arg, char *argv[]){
 
-	char mensaje[1000], llave[1000];
-	char *codigoMorse[]={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----"};
+	char mensaje[1000], llave[1000], *mensajeMorse[1000];
 
 	if(arg==3){
 		if(!esNumero(argv[1])){
@@ -33,6 +32,9 @@ void main(int arg, char *argv[]){
 		if(esNumero(llave)){
 			minusculaMayuscula(mensaje,atoi(llave));
 			printf("\tMensaje cifrado              : %s",mensaje);
+			mensajeAMorse(mensaje,mensajeMorse);
+			printf("\n\tMensaje cifrado en morse    : ");
+			imprimirArrayString(mensajeMorse);
 		}else{
 			printf("\n\tERROR, INGRESE UNA LLAME NUMERICA VALIDA");
 		}
@@ -75,6 +77,42 @@ int nuevoValor( int min, int max, int pos, int desfase){
 
          }
 	return pos;
+}
+
+
+void minusculaAMayuscula(char string[]){
+	int i=0;
+	int desp='a'-'A';
+	for (i=0;string[i]!='\0';++i){
+		if(string[i]>='a'&&string[i]<='z'){
+			string[i]=string[i]-desp;
+		}
+	}
+}
+
+void imprimirArrayString(char *mensajeMorse[]){
+
+	int i;
+
+	for(i=0;mensajeMorse[i]!=NULL;i++){
+		printf("%s",mensajeMorse[i]);
+	}
+
+}
+
+void mensajeAMorse(char mensaje[], char *mensajeMorse[]){
+
+	char *codigoMorse[]={" .-"," -..."," -.-."," -.."," ."," ..-."," --."," ...."," .."," .---"," -.-"," .-.."," --"," -."," ---"," .--."," --.-"," .-."," ..."," -"," ..-"," ...-"," .--"," -..-"," -.--"," --.."," .----"," ..---"," ...--"," ....-"," ....."," -...."," --..."," ---.."," ----."," -----"};
+	int i,j;
+
+	minusculaAMayuscula(mensaje);
+
+	for(i=0;mensaje[i]!='\0';i++){
+		j=mensaje[i];
+//		printf("%i,%s",j,codigoMorse[j-65]);
+//		strcat(mensajeMorse[i],codigoMorse[65-mensaje[i]]);
+		mensajeMorse[i]=codigoMorse[j-65];
+	}
 }
 
 void minusculaMayuscula(char mensaje[], int desfase){
