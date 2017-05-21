@@ -6,7 +6,8 @@
 void main(int arg, char *argv[]){
 
 	char mensaje[1000], llave[1000];
-
+	
+	//Parte 2
 
 	if(arg==3){
 		if(!esNumero(argv[1])){
