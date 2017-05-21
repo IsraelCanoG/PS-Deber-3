@@ -9,16 +9,17 @@ void main(int arg, char *argv[]){
 
 
 	if(arg==3){
-
-		strcpy(mensaje,argv[2]);
-		minusculaMayuscula(mensaje,llave);
-		printf("\n\n***********************************************************************************************\n\n");
-	        printf("\tCifrado ciclico\n");
-        	printf("\tIngrese mensaje a cifrar     : %s\n",argv[2]);
-	        printf("\tIngrese la llave numerica    : %i\n",*argv[1]);
-	        printf("\tMensaje cifrado              : %s\n",mensaje);
-		printf("\n\n***********************************************************************************************\n\n");
-
+		if(!esNumero(argv[1])){
+			printf("\n\n\tPARAMETROS ERRONEOS\n\n");
+		}else{
+			printf("\n\n***********************************************************************************************\n\n");
+		        printf("\tCifrado ciclico\n");
+        		printf("\tIngrese mensaje a cifrar     : %s\n",argv[2]);
+		        printf("\tIngrese la llave numerica    : %s\n",argv[1]);
+			minusculaMayuscula(argv[2],atoi(argv[1]));
+		        printf("\tMensaje cifrado              : %s\n",argv[2]);
+			printf("\n\n***********************************************************************************************\n\n");
+		}
 	}
 
 	if(arg==1){
