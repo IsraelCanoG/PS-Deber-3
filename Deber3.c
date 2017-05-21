@@ -16,7 +16,10 @@ void main(int arg, char *argv[]){
         		printf("\tIngrese mensaje a cifrar     : %s\n",argv[2]);
 		        printf("\tIngrese la llave numerica    : %s\n",argv[1]);
 			minusculaMayuscula(argv[2],atoi(argv[1]));
-		        printf("\tMensaje cifrado              : %s\n",argv[2]);
+		        printf("\tMensaje cifrado              : %s",argv[2]);
+			mensajeAMorse(argv[2],mensajeMorse);
+			printf("\n\tMensaje cifrado en morse    : ");
+			imprimirArrayString(mensajeMorse);
 			printf("\n\n***********************************************************************************************\n\n");
 		}
 	}
@@ -102,16 +105,26 @@ void imprimirArrayString(char *mensajeMorse[]){
 
 void mensajeAMorse(char mensaje[], char *mensajeMorse[]){
 
-	char *codigoMorse[]={" .-"," -..."," -.-."," -.."," ."," ..-."," --."," ...."," .."," .---"," -.-"," .-.."," --"," -."," ---"," .--."," --.-"," .-."," ..."," -"," ..-"," ...-"," .--"," -..-"," -.--"," --.."," .----"," ..---"," ...--"," ....-"," ....."," -...."," --..."," ---.."," ----."," -----"};
+	char *codigoMorse[]={" .-"," -..."," -.-."," -.."," ."," ..-."," --."," ...."," .."," .---"," -.-"," .-.."," --"," -."," ---"," .--."," --.-"," .-."," ..."," -"," ..-"," ...-"," .--"," -..-"," -.--"," --..","-----"," .----"," ..---"," ...--"," ....-"," ....."," -...."," --..."," ---.."," ----."};
 	int i,j;
 
 	minusculaAMayuscula(mensaje);
 
 	for(i=0;mensaje[i]!='\0';i++){
 		j=mensaje[i];
-//		printf("%i,%s",j,codigoMorse[j-65]);
-//		strcat(mensajeMorse[i],codigoMorse[65-mensaje[i]]);
-		mensajeMorse[i]=codigoMorse[j-65];
+		if(j>=48&&j<=57){
+			mensajeMorse[i]=codigoMorse[j-22];
+		}else{
+			if(j==32){
+				mensajeMorse[i]=" /";
+			}else{
+				if(j>=65&&j<=90){
+					mensajeMorse[i]=codigoMorse[j-65];
+				}else{
+					mensajeMorse[i]=" |";
+				}
+			}
+		}
 	}
 }
 
