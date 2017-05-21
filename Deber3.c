@@ -3,22 +3,18 @@
 
 void main(){
 
-	char mensaje[1000]="abcdefghijklmnopqrstuvwyyz";
-	int llave=-1,i,j,tmp;
+	char mensaje[1000];
+	int llave;
 
-	printf("%s\n",mensaje);
+	printf("\n\n***********************************************************************************************\n\n");
+	printf("\tCifrado ciclico\n");
+	printf("\tIngrese mensaje a cifrar     : ");
+	scanf("%[^\n]",mensaje);
+	printf("\tIngrese la llave numerica    : ");
+	scanf("%i",&llave);
 	minusculaMayuscula(mensaje,llave);
-	printf("%s",mensaje);
-
-//	printf("\n\n***********************************************************************************************\n\n");
-//	printf("\tIngrese el mensaje a cifrar: \n");
-//	scanf("%s",&mensaje);
-//	printf("\tIngrese la llave numerica  : \n");
-//	scanf("%i",&llave);
-//	char c = 'A';
-//	c = 'z';
-//	printf("%i",c)}/	printf("\n%s",mensaje);
-
+	printf("\tMensaje cifrado              : %s",mensaje);
+	printf("\n\n***********************************************************************************************\n\n");
 
 
 }
@@ -52,11 +48,13 @@ void minusculaMayuscula(char mensaje[], int desfase){
 
 		if(mensaje[i]>=65 && mensaje[i]<=90){
 			mensaje[i]=nuevoValor(65,90,mensaje[i],desfase);
+		}else{
+			if(mensaje[i]>=97 && mensaje[i]<=122){
+				mensaje[i]=nuevoValor(97,122,mensaje[i],desfase);
+			}else{
+				mensaje[i]=mensaje[i];
+			}
 		}
-		if(mensaje[i]>=97 && mensaje[i]<=122){
-			mensaje[i]=nuevoValor(97,122,mensaje[i],desfase);
-		}
-
 	}
 
 	return;
