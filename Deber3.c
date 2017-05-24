@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "morse.h"
+#include "cifrado.h"
+#include "varios.h"
 
-
-void main(int arg, char *argv[]){
+int main(int arg, char *argv[]){
 
 	char mensaje[1000], llave[1000], *mensajeMorse[1000];
 
@@ -15,11 +17,11 @@ void main(int arg, char *argv[]){
 		        printf("\tCifrado ciclico\n");
         		printf("\tIngrese mensaje a cifrar     : %s\n",argv[2]);
 		        printf("\tIngrese la llave numerica    : %s\n",argv[1]);
-			minusculaMayuscula(argv[2],atoi(argv[1]));
+			cifradoCiclico(argv[2],atoi(argv[1]));
 		        printf("\tMensaje cifrado              : %s",argv[2]);
 			mensajeAMorse(argv[2],mensajeMorse);
 			printf("\n\tMensaje cifrado en morse    : ");
-			imprimirArrayString(mensajeMorse);
+			imprimirArreglo(mensajeMorse);
 			printf("\n\n***********************************************************************************************\n\n");
 		}
 	}
@@ -33,33 +35,35 @@ void main(int arg, char *argv[]){
 		printf("\tIngrese la llave numerica    : ");
 		scanf("%s",llave);
 		if(esNumero(llave)){
-			minusculaMayuscula(mensaje,atoi(llave));
+			cifradoCiclico(mensaje,atoi(llave));
 			printf("\tMensaje cifrado              : %s",mensaje);
 			mensajeAMorse(mensaje,mensajeMorse);
 			printf("\n\tMensaje cifrado en morse    : ");
-			imprimirArrayString(mensajeMorse);
+			imprimirArreglo(mensajeMorse);
 		}else{
 			printf("\n\tERROR, INGRESE UNA LLAME NUMERICA VALIDA");
 		}
 		printf("\n\n***********************************************************************************************\n\n");
 
 	}
-
+	return 0;
 
 }
 
+
+/*
 int esNumero(char num[]){
 	int i;
 	for(i=0;num[i]!='\0';i++){
-		if(!(num[i]>=48 && num[i]<=57 || num[i]==45 || num[i]==43)){
+		if(!((num[i]>=48 && num[i]<=57) || num[i]==45 || num[i]==43)){
 			return 0;
 		}
 	}
 	return 1;
-}
+
 
 int nuevoValor( int min, int max, int pos, int desfase){
-	int tmp,i;
+	int i;
 	if(desfase>0){
 
 		for (i=1;i<=desfase;i++){
@@ -95,7 +99,6 @@ void minusculaAMayuscula(char string[]){
 
 void imprimirArrayString(char *mensajeMorse[]){
 
-	int i;
 
 	for(i=0;mensajeMorse[i]!=NULL;i++){
 		printf("%s",mensajeMorse[i]);
@@ -105,7 +108,7 @@ void imprimirArrayString(char *mensajeMorse[]){
 
 void mensajeAMorse(char mensaje[], char *mensajeMorse[]){
 
-	char *codigoMorse[]={" .-"," -..."," -.-."," -.."," ."," ..-."," --."," ...."," .."," .---"," -.-"," .-.."," --"," -."," ---"," .--."," --.-"," .-."," ..."," -"," ..-"," ...-"," .--"," -..-"," -.--"," --..","-----"," .----"," ..---"," ...--"," ....-"," ....."," -...."," --..."," ---.."," ----."};
+	char *codigoMorse[]={" .-"," -..."," -.-."," -.."," ."," ..-."," --."," ...."," .."," .---"," -.-"," .-.."," --"," -."," ---"," .--."," --.-"," .-."," ..."," -"," ..-"," ...-"," .--"," -..-"," -.--"," --.."," -----"," .----"," ..---"," ...--"," ....-"," ....."," -...."," --..."," ---.."," ----."};
 	int i,j;
 
 	minusculaAMayuscula(mensaje);
@@ -128,7 +131,7 @@ void mensajeAMorse(char mensaje[], char *mensajeMorse[]){
 	}
 }
 
-void minusculaMayuscula(char mensaje[], int desfase){
+void cifradoCiclico(char mensaje[], int desfase){
 
 	int i;
 
@@ -149,18 +152,4 @@ void minusculaMayuscula(char mensaje[], int desfase){
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
