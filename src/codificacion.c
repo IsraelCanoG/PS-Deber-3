@@ -32,30 +32,3 @@ char *claveMorse(char *mensaje){
 
 }
 
-/*	char *mensajeMorse[]=mensaje;
-
-        int i,j;
-
-        minusculaAMayuscula(*mensaje);
-
-        for(i=0;mensajeMorse[i]!='\0';i++){
-                j=mensajeMorse[i];
-                if(j>=48&&j<=57){
-                        mensajeMorse[i]=codigoMorse[j-22];
-                }else{
-                        if(j==32){
-                                mensajeMorse[i]=" /";
-                        }else{
-                                if(j>=65&&j<=90){
-                                        mensajeMorse[i]=codigoMorse[j-65];
-                                }else{
-                                        mensajeMorse[i]=" |";
-                                }
-                        }
-                }
-        }
-
-	return mensajeMorse;
-*/
-
-

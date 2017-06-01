@@ -1,3 +1,4 @@
+//
 char* cifradoCiclico(char* mensaje, int llave);
 int nuevoValor( int min, int max, int pos, int desfase);
 //

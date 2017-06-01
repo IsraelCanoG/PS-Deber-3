@@ -42,3 +42,16 @@ char *cifradoCiclico(char *mensaje, int llave){
 	return mensaje;
 
 }
+
+char* cifradoAutollave(char* mensaje, char* llave){
+
+
+
+}
+
+
+char* cifradoContraseña(char* mensaje, char* llave){
+
+
+
+}
