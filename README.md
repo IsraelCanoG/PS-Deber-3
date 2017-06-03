@@ -36,4 +36,10 @@ _argumentos permitidos_
 ```
 
 _salida_
+
 ![''](./example1.png)
+
+
+# Otros
+
+Los archivos gulpfile.js, package.json y yarn.lock son para autoejecutado de make cuando cambia un archivo

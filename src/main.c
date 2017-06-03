@@ -24,7 +24,7 @@ int main(int arg, char *argv[]){
 			}else{
 				printf("\tError: formato invalido\n");
 			}
-			
+
 			break;
 
 		default:
@@ -37,12 +37,12 @@ int main(int arg, char *argv[]){
 
 }
 
-void clean_stdin(void) { 
-	int c; 
-   	do { 
-	     c = getchar(); 
-	}while (c != '\n' && c != EOF); 
-} 
+void clean_stdin(void) {
+	int c;
+   	do {
+	     c = getchar();
+	}while (c != '\n' && c != EOF);
+}
 
 
 void imprimirMenu(){
@@ -73,7 +73,7 @@ void imprimirMenu(){
 			break;
 
 		case 'A':
-			//------------------------------------------
+			// solo permitido mayusculas
 			break;
 
 		case 'P':
@@ -101,9 +101,9 @@ void imprimirMenuArgumentos(char *argumentos[]){
 			printf("\n\tCifrado ciclico\n");
 			printf("\tIngrese mensaje a cifrar     : %s\n",argumentos[2]);
         		printf("\tIngrese la llave numerica    : %s\n",argumentos[1]);
-			cifradoCiclico(argumentos[2],atoi(argumentos[1])); 
-			printf("\tMensaje cifrado              : %s",argumentos[2]); 
-			printf("\n\tMensaje cifrado en morse    : "); 
+			cifradoCiclico(argumentos[2],atoi(argumentos[1]));
+			printf("\tMensaje cifrado              : %s",argumentos[2]);
+			printf("\n\tMensaje cifrado en morse    : ");
 			claveMorse(argumentos[2]);
 			break;
 
