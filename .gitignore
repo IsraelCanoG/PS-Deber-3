@@ -1,0 +1,3 @@
+bin/cifrador
+lib/libcifrado.so
+obj/*.o
