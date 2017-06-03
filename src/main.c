@@ -8,6 +8,7 @@ void imprimirMenu();
 void imprimirMenuArgumentos(char *argumentos[]);
 int esNumero(char num[]);
 int esComando(char *comando);
+int esChar(char *palabra);
 int main(int arg, char *argv[]){
 
 
@@ -21,7 +22,9 @@ int main(int arg, char *argv[]){
 									//Se verifica si el formato de número es válido
 			if(esComando(argv[3])&&esNumero(argv[1])){
 				imprimirMenuArgumentos(argv);
-			}else{
+			} else if (esComando(argv[3]) && esChar(argv[2])){ // redireccion a tipo -A
+				imprimirMenuArgumentos(argv);
+			} else {
 				printf("\tError: formato invalido\n");
 			}
 
@@ -73,7 +76,9 @@ void imprimirMenu(){
 			break;
 
 		case 'A':
+			
 			// solo permitido mayusculas
+			//cifradoContrasena(mensaje,llaveNumerica);
 			break;
 
 		case 'P':
@@ -93,7 +98,6 @@ void imprimirMenuArgumentos(char *argumentos[]){
 	printf("\n\n***********************************************************************************************\n\n");
 	printf("\tTipo de cifrado: ");
 	char *comando=argumentos[3];
-
 	switch(comando[1]){
 
 		case 'c':
@@ -108,12 +112,13 @@ void imprimirMenuArgumentos(char *argumentos[]){
 			break;
 
 		case 'a':
-			printf("A");
+			
 			//------------------------------------------
 			break;
 
 		case 'p':
-			printf("P");
+			printf("Assss");
+			cifradoContrasena(argumentos[2], argumentos[1]); // mensaje llave
 			//------------------------------------------
 			break;
 
@@ -149,4 +154,10 @@ int esNumero(char num[]){
                 }
         }
         return 1;
+}
+
+int esChar(char *palabra) {
+	if (palabra != NULL || palabra[0]!= '\0')
+		return 1;
+	return 0;
 }
