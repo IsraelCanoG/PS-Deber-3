@@ -182,7 +182,8 @@ char* cifradoContrasena(char* mensaje, char* llave){
     int *posiciones_espacios = posicionesEspacios(mensaje);
     char *llave_espaciada = llaveEspaciada(llave, posiciones_espacios);
     char *mensaje_contrasena = mensajeContrasena(llave_espaciada, mensaje, mensaje_no_espacios);
-    return mensaje_contrasena;
+		char *contrasena = generarClave(mensaje, mensaje_contrasena);
+    return contrasena;
 }
 // fin cifrado contrasena
 
