@@ -25,6 +25,9 @@ $ ./bin/cifrador
 ```
 
 ### Opciones de ejecutado
+
+#### Cifrado ciclico
+
 _argumentos permitidos_
 
 | numero cifrado | palabra a cifrar        | opcion de cifrar |
@@ -39,6 +42,21 @@ _salida_
 
 ![''](./example1.png)
 
+#### Cifrado contrasena
+
+_argumentos permitidos_
+
+| palaba contrasena | palabra a cifrar        | opcion de cifrar |
+|:---------------|:------------------------|:-----------------|
+| String         | String entre parentesis | -p               |
+
+```sh
+$ ./bin/cifrador "MARAZUL" "HOLA PEDRO" -p
+```
+
+_salida_
+
+![''](./example2.png)
 
 # Otros
 

@@ -76,7 +76,7 @@ void imprimirMenu(){
 			break;
 
 		case 'A':
-			
+
 			// solo permitido mayusculas
 			//cifradoContrasena(mensaje,llaveNumerica);
 			break;
@@ -113,12 +113,17 @@ void imprimirMenuArgumentos(char *argumentos[]){
 			break;
 
 		case 'a':
-			
+
 			//------------------------------------------
 			break;
 
 		case 'p':
-			cifradoContrasena(argumentos[2], argumentos[1]);
+			printf("P");
+			if (comando[1] == 'p') {
+				char *cifr = cifradoContrasena(argumentos[2], argumentos[1]);
+				printf("\n\n\tMensaje cifrado: %s\n", cifr);
+			}
+
 			//strpy(cifrado,cifradoContrasena(argumentos[2], argumentos[1]));
 			//printf("%s\n", cifrado);
 			//------------------------------------------

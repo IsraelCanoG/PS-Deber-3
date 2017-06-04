@@ -159,14 +159,13 @@ char* generarClave(char* mensaje, char* mensaje_contrasena) {
     char letra_cifrado = '0';
     size_t cont = 0;
     int tmp_num = 0;
-    int space = 32;
     while (mensaje[cont] != '\0' && mensaje_contrasena != '\0') {
         c_actual_contrasena = (int)mensaje_contrasena[cont];
         c_actual_mensaje = (int)mensaje[cont];
         tmp = c_actual_contrasena - limite_inf;
         tmp_num = ciclico(c_actual_mensaje, tmp);
         if (tmp == -1) {
-            salida[cont] = (char)space;
+            salida[cont] = ' ';
             cont++;
             continue;
         }
@@ -179,23 +178,12 @@ char* generarClave(char* mensaje, char* mensaje_contrasena) {
 }
 
 char* cifradoContrasena(char* mensaje, char* llave){
-    char *mensaje_cifrado = (char *)malloc(sizeof(char) *50);
-    //printf("%s\n", mensaje);
     char* mensaje_no_espacios = mensajeSinEspacios(mensaje);
-    //printf("%s\n", mensaje_no_espacios);
     int *posiciones_espacios = posicionesEspacios(mensaje);
-    //printf("%d\n", posiciones_espacios[2]);
     char *llave_espaciada = llaveEspaciada(llave, posiciones_espacios);
-    //printf("%s\n", llave_espaciada);
     char *mensaje_contrasena = mensajeContrasena(llave_espaciada, mensaje, mensaje_no_espacios);
-    //printf("%s\n", mensaje_contrasena);
-    strcpy(mensaje_cifrado,generarClave(mensaje, mensaje_contrasena));
-    //printf("%s\n", mensaje_cifrado);
-    //char *tmp = "";
-    printf("%s\n", mensaje_cifrado);
-    return mensaje_cifrado;
+    return mensaje_contrasena;
 }
-
 // fin cifrado contrasena
 
 
