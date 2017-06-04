@@ -98,6 +98,7 @@ void imprimirMenuArgumentos(char *argumentos[]){
 	printf("\n\n***********************************************************************************************\n\n");
 	printf("\tTipo de cifrado: ");
 	char *comando=argumentos[3];
+	//char *cifrado = (char)malloc(sizeof(char) *50);
 	switch(comando[1]){
 
 		case 'c':
@@ -117,8 +118,9 @@ void imprimirMenuArgumentos(char *argumentos[]){
 			break;
 
 		case 'p':
-			printf("Assss");
-			cifradoContrasena(argumentos[2], argumentos[1]); // mensaje llave
+			cifradoContrasena(argumentos[2], argumentos[1]);
+			//strpy(cifrado,cifradoContrasena(argumentos[2], argumentos[1]));
+			//printf("%s\n", cifrado);
 			//------------------------------------------
 			break;
 

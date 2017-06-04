@@ -136,18 +136,64 @@ char* extraerString(char* palabra, int inicio, int fin) {
     return st;
 }
 
+int ciclico (int numero, int salto) {
+    int limite_sup = 90;
+    int limite_inf = 65;
+    int num_salto = numero + salto;
+    if (numero == 32) {
+        return -1;
+    }
+    if (num_salto > 90) {
+        return num_salto - limite_sup + limite_inf - 1;
+    } else {
+        return num_salto;
+    }
+}
+
+char* generarClave(char* mensaje, char* mensaje_contrasena) {
+    char* salida = (char *)malloc(sizeof(char) * 50);
+    int c_actual_contrasena = 0;
+    int c_actual_mensaje = 0;
+    int limite_inf = 65;
+    int tmp = 0;
+    char letra_cifrado = '0';
+    size_t cont = 0;
+    int tmp_num = 0;
+    int space = 32;
+    while (mensaje[cont] != '\0' && mensaje_contrasena != '\0') {
+        c_actual_contrasena = (int)mensaje_contrasena[cont];
+        c_actual_mensaje = (int)mensaje[cont];
+        tmp = c_actual_contrasena - limite_inf;
+        tmp_num = ciclico(c_actual_mensaje, tmp);
+        if (tmp == -1) {
+            salida[cont] = (char)space;
+            cont++;
+            continue;
+        }
+        letra_cifrado = (char)tmp_num;
+        salida[cont] = letra_cifrado;
+        cont++;
+    }
+    salida[cont] = '\0';
+    return salida;
+}
+
 char* cifradoContrasena(char* mensaje, char* llave){
-    printf("%s\n", mensaje);
+    char *mensaje_cifrado = (char *)malloc(sizeof(char) *50);
+    //printf("%s\n", mensaje);
     char* mensaje_no_espacios = mensajeSinEspacios(mensaje);
-    printf("%s\n", mensaje_no_espacios);
+    //printf("%s\n", mensaje_no_espacios);
     int *posiciones_espacios = posicionesEspacios(mensaje);
-    printf("%d\n", posiciones_espacios[2]);
+    //printf("%d\n", posiciones_espacios[2]);
     char *llave_espaciada = llaveEspaciada(llave, posiciones_espacios);
-    printf("%s\n", llave_espaciada);
+    //printf("%s\n", llave_espaciada);
     char *mensaje_contrasena = mensajeContrasena(llave_espaciada, mensaje, mensaje_no_espacios);
-    printf("%s\n", mensaje_contrasena);
-    char *tmp = "";
-    return tmp;
+    //printf("%s\n", mensaje_contrasena);
+    strcpy(mensaje_cifrado,generarClave(mensaje, mensaje_contrasena));
+    //printf("%s\n", mensaje_cifrado);
+    //char *tmp = "";
+    printf("%s\n", mensaje_cifrado);
+    return mensaje_cifrado;
 }
 
 // fin cifrado contrasena
